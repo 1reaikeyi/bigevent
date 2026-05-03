@@ -38,7 +38,7 @@ public class FileController {
     @PostMapping("/upload")
     public Result upload(MultipartFile file) {
         String originalFilename = file.getOriginalFilename();
-        File file_local = new File("src/main/resources/static/云");
+        File file_local = new File("云");
         try {
             String path = file_local.getAbsolutePath();
             new File(path).mkdirs();
@@ -46,7 +46,7 @@ public class FileController {
             String saveName = UUID.randomUUID().toString() + "." + originalFilename;
             file.transferTo(new File(path + "\\" + saveName));
             log.info("文件上传成功: {}", path + "\\" + saveName);
-            return Result.success("/static/云/" + saveName);
+            return Result.success("云/" + saveName);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -60,7 +60,7 @@ public class FileController {
      */
     @GetMapping("/download")
     public void download(String fileName, HttpServletResponse response) {
-        File file_local = new File("src/main/resources/static/云");
+        File file_local = new File("云");
         String path = file_local.getAbsolutePath() + "/" + fileName;
         try {
             File file = new File(path);
