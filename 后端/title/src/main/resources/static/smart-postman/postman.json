@@ -1,0 +1,1140 @@
+{
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "3ca80bc2-a27b-4368-ab50-5a0aada1bcdf",
+    "name": "title"
+  },
+  "item": [
+    {
+      "name": "default",
+      "item": [
+        {
+          "name": "用户管理控制器",
+          "item": [
+            {
+              "name": "用户注册",
+              "request": {
+                "method": "POST",
+                "body": {
+                  "mode": "x-www-form-urlencoded",
+                  "formdata": [
+                    {
+                      "key": "id",
+                      "type": "text",
+                      "description": "No comments found.",
+                      "value": "0",
+                      "hasItems": false
+                    },
+                    {
+                      "key": "userName",
+                      "type": "text",
+                      "description": "No comments found.",
+                      "value": "\"\"",
+                      "hasItems": false
+                    },
+                    {
+                      "key": "nickName",
+                      "type": "text",
+                      "description": "No comments found.",
+                      "value": "\"\"",
+                      "hasItems": false
+                    },
+                    {
+                      "key": "email",
+                      "type": "text",
+                      "description": "No comments found.",
+                      "value": "\"\"",
+                      "hasItems": false
+                    },
+                    {
+                      "key": "userPic",
+                      "type": "text",
+                      "description": "No comments found.",
+                      "value": "\"\"",
+                      "hasItems": false
+                    },
+                    {
+                      "key": "createTime",
+                      "type": "text",
+                      "description": "No comments found.",
+                      "value": "\"yyyy-MM-dd HH:mm:ss\"",
+                      "hasItems": false
+                    },
+                    {
+                      "key": "updateTime",
+                      "type": "text",
+                      "description": "No comments found.",
+                      "value": "\"yyyy-MM-dd HH:mm:ss\"",
+                      "hasItems": false
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:8080/user/register",
+                  "protocol": "http",
+                  "path": [
+                    "user",
+                    "register"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "用户注册",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "用户注册"
+            },
+            {
+              "name": "用户登录",
+              "request": {
+                "method": "POST",
+                "body": {
+                  "mode": "x-www-form-urlencoded",
+                  "formdata": [
+                    {
+                      "key": "",
+                      "type": "text",
+                      "value": "anlpp0",
+                      "hasItems": false
+                    },
+                    {
+                      "key": "password",
+                      "type": "text",
+                      "description": "密码",
+                      "value": "",
+                      "hasItems": false
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:8080/user/login",
+                  "protocol": "http",
+                  "path": [
+                    "user",
+                    "login"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "用户登录",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "用户登录"
+            },
+            {
+              "name": "获取用户信息",
+              "request": {
+                "method": "GET",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/user/:id",
+                  "protocol": "http",
+                  "path": [
+                    "user",
+                    ":id"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "0",
+                      "description": "用户ID"
+                    }
+                  ]
+                },
+                "description": "获取用户信息",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "获取用户信息"
+            },
+            {
+              "name": "更新用户信息",
+              "request": {
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 0,\n  \"userName\": \"\",\n  \"nickName\": \"\",\n  \"email\": \"\",\n  \"userPic\": \"\",\n  \"createTime\": \"yyyy-MM-dd HH:mm:ss\",\n  \"updateTime\": \"yyyy-MM-dd HH:mm:ss\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/user",
+                  "protocol": "http",
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "更新用户信息",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "更新用户信息"
+            },
+            {
+              "name": "更新用户密码",
+              "request": {
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mapKey1\": \"\",\n  \"mapKey2\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/user/updatePwd",
+                  "protocol": "http",
+                  "path": [
+                    "user",
+                    "updatePwd"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "更新用户密码",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "更新用户密码"
+            }
+          ]
+        },
+        {
+          "name": "文章管理控制器\r\n&lt;p&gt;\r\n负责文章的增删改查、状态管理、分类关联等核心功能，\r\n提供完整的文章管理API接口，支持JWT认证和权限控制。\r\n&lt;/p&gt;",
+          "item": [
+            {
+              "name": "添加文章",
+              "request": {
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 0,\n  \"title\": \"\",\n  \"content\": \"\",\n  \"coverImg\": \"\",\n  \"state\": \"\",\n  \"categoryId\": 0,\n  \"createUser\": 0,\n  \"updateUser\": 0,\n  \"createTime\": \"yyyy-MM-dd HH:mm:ss\",\n  \"updateTime\": \"yyyy-MM-dd HH:mm:ss\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/article",
+                  "protocol": "http",
+                  "path": [
+                    "article"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "添加文章",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "添加文章"
+            },
+            {
+              "name": "获取所有文章",
+              "request": {
+                "method": "GET",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/article/list",
+                  "protocol": "http",
+                  "path": [
+                    "article",
+                    "list"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "获取所有文章",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "获取所有文章"
+            },
+            {
+              "name": "获取分页文章列表",
+              "request": {
+                "method": "GET",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/article?pageNum=0&pageSize=0",
+                  "protocol": "http",
+                  "path": [
+                    "article"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [
+                    {
+                      "key": "pageNum",
+                      "value": "0",
+                      "description": "页码"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "0",
+                      "description": "每页数量，"
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "获取分页文章列表",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "获取分页文章列表"
+            },
+            {
+              "name": "获取单个文章",
+              "request": {
+                "method": "GET",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/article/:id",
+                  "protocol": "http",
+                  "path": [
+                    "article",
+                    ":id"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "0",
+                      "description": "文章ID"
+                    }
+                  ]
+                },
+                "description": "获取单个文章",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "获取单个文章"
+            },
+            {
+              "name": "更新文章",
+              "request": {
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 0,\n  \"title\": \"\",\n  \"content\": \"\",\n  \"coverImg\": \"\",\n  \"state\": \"\",\n  \"categoryId\": 0,\n  \"createUser\": 0,\n  \"updateUser\": 0,\n  \"createTime\": \"yyyy-MM-dd HH:mm:ss\",\n  \"updateTime\": \"yyyy-MM-dd HH:mm:ss\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/article",
+                  "protocol": "http",
+                  "path": [
+                    "article"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "更新文章",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "更新文章"
+            },
+            {
+              "name": "删除文章",
+              "request": {
+                "method": "DELETE",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/article/:id",
+                  "protocol": "http",
+                  "path": [
+                    "article",
+                    ":id"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "0",
+                      "description": "文章ID"
+                    }
+                  ]
+                },
+                "description": "删除文章",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "删除文章"
+            }
+          ]
+        },
+        {
+          "name": "分类管理控制器",
+          "item": [
+            {
+              "name": "添加分类",
+              "request": {
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 0,\n  \"categoryName\": \"\",\n  \"categoryAlias\": \"\",\n  \"createUser\": 0,\n  \"updateUser\": 0,\n  \"createTime\": \"yyyy-MM-dd HH:mm:ss\",\n  \"updateTime\": \"yyyy-MM-dd HH:mm:ss\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/category",
+                  "protocol": "http",
+                  "path": [
+                    "category"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "添加分类",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "添加分类"
+            },
+            {
+              "name": "获取所有分类",
+              "request": {
+                "method": "GET",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/category",
+                  "protocol": "http",
+                  "path": [
+                    "category"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "获取所有分类",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "获取所有分类"
+            },
+            {
+              "name": "getById",
+              "request": {
+                "method": "GET",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/category/:id",
+                  "protocol": "http",
+                  "path": [
+                    "category",
+                    ":id"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "0",
+                      "description": "分类ID"
+                    }
+                  ]
+                },
+                "description": "getById",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": ""
+            },
+            {
+              "name": "更新分类",
+              "request": {
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 0,\n  \"categoryName\": \"\",\n  \"categoryAlias\": \"\",\n  \"createUser\": 0,\n  \"updateUser\": 0,\n  \"createTime\": \"yyyy-MM-dd HH:mm:ss\",\n  \"updateTime\": \"yyyy-MM-dd HH:mm:ss\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/category",
+                  "protocol": "http",
+                  "path": [
+                    "category"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "更新分类",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "更新分类"
+            },
+            {
+              "name": "删除分类",
+              "request": {
+                "method": "DELETE",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/category/:id",
+                  "protocol": "http",
+                  "path": [
+                    "category",
+                    ":id"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "0",
+                      "description": "分类ID"
+                    }
+                  ]
+                },
+                "description": "删除分类",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "删除分类"
+            }
+          ]
+        },
+        {
+          "name": "文件管理控制器",
+          "item": [
+            {
+              "name": "上传文件",
+              "request": {
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "file",
+                      "type": "file",
+                      "description": "要上传的文件",
+                      "src": [],
+                      "value": "",
+                      "hasItems": false
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:8080/common/upload",
+                  "protocol": "http",
+                  "path": [
+                    "common",
+                    "upload"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [],
+                  "variable": []
+                },
+                "description": "上传文件",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "上传文件"
+            },
+            {
+              "name": "下载文件",
+              "request": {
+                "method": "GET",
+                "body": {
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/common/download?fileName=",
+                  "protocol": "http",
+                  "path": [
+                    "common",
+                    "download"
+                  ],
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "query": [
+                    {
+                      "key": "fileName",
+                      "value": "",
+                      "description": "文件名"
+                    }
+                  ],
+                  "variable": []
+                },
+                "description": "下载文件",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {token}",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Authorization",
+                    "description": "Bearer token"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Content-Type",
+                    "description": "Request content type"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text",
+                    "disabled": true,
+                    "name": "Accept",
+                    "description": "Response accept type"
+                  }
+                ]
+              },
+              "description": "下载文件"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

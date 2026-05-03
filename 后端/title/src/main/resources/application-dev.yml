@@ -1,0 +1,14 @@
+title:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    port: 3306
+    database: use_big_event
+    userName: root
+    password: ${MYSQL_PASSWORD}
+  redis:
+    host: 192.168.80.128
+    port: 6379
+    password: ${MYSQL_PASSWORD}
+    database: 0
+

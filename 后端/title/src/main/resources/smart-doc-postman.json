@@ -1,0 +1,39 @@
+{
+  "serverUrl": "http://localhost:8080",
+  "isStrict": false,
+  "allInOne": true,
+  "coverOld": true,
+  "outPath": "src/main/resources/static/smart-postman",
+  "projectName": "smart-doc",
+  "framework": "spring",
+  "showAuthor": true,
+  "requestHeaders": [
+    {
+      "name": "Authorization",
+      "type": "string",
+      "desc": "Bearer token",
+      "required": false,
+      "value": "Bearer {token}"
+    },
+    {
+      "name": "Content-Type",
+      "type": "string",
+      "desc": "Request content type",
+      "required": false,
+      "value": "application/json"
+    },
+    {
+      "name": "Accept",
+      "type": "string",
+      "desc": "Response accept type",
+      "required": false,
+      "value": "application/json"
+    }
+  ],
+  "sourceCodePaths": [
+    {
+      "path": "src/main/java"
+    }
+  ]
+}
+

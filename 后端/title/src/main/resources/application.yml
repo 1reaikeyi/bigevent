@@ -1,0 +1,40 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: title
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: ${title.datasource.driver-class-name}
+    url: jdbc:mysql://${title.datasource.host}:${title.datasource.port}/${title.datasource.database}
+    username: ${title.datasource.userName}
+    password: ${title.datasource.password}
+  data:
+    redis:
+      host: ${title.redis.host}
+      port: ${title.redis.port}
+      password: ${title.redis.password}
+      database: ${title.redis.database}
+
+  config:
+    import:
+     classpath: mybatis-plus.yml, redis.yml
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+logging:
+  level:
+    title:
+      web:
+        controller: info
+jwt:
+  # 设置jwt签名加密时使用的秘钥
+  secret-key: 华为huawei_secret_key_for_jwt_token_generation
+  # 设置jwt过期时间
+  ttlMillis: 864000000
+  # 设置前端传递过来的令牌名称
+  token-name: token
+
