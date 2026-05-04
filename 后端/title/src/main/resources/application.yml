@@ -25,11 +25,16 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
-logging:
-  level:
-    title:
-      web:
-        controller: info
+alioss:
+  endpoint: ${title.endpoint}
+  access-key-id: ${title.access-key-id}
+  access-key-secret: ${title.access-key-secret}
+  bucket-name: ${title.bucket-name}
+#logging:
+#  level:
+#    title:
+#      web:
+#        controller: info
 jwt:
   # 设置jwt签名加密时使用的秘钥
   secret-key: 华为huawei_secret_key_for_jwt_token_generation
