@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.core.conditions.update.Update;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,10 +30,10 @@ public class User {
     @TableField(value = "password")
     private String password;//密码
 
-//    @NotEmpty @Pattern(regexp = "^\\S{1,10}$")
+//    @NotEmpty @Pattern(regexp = "^\\S{1,10}$")    @NotEmpty
     @TableField(value = "nickname")
     private String nickName;//昵称
-//    @Email @NotEmpty
+    @Email
     @TableField(value = "email")
     private String email;//邮箱
     @TableField(value = "user_pic")

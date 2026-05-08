@@ -28,11 +28,10 @@ public class FileOss {
     @PostMapping("/upload")
     public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file) {
 
-        Map<String, String> result = new HashMap<>();
-        
+        Map<String, String> fileResult = new HashMap<>();
         if (file.isEmpty()) {
-            result.put("error", "请选择要上传的文件");
-            return ResponseEntity.badRequest().body(result);
+            fileResult.put("error", "请选择要上传的文件");
+            return ResponseEntity.badRequest().body(fileResult);
         }
 
         try {
@@ -41,15 +40,16 @@ public class FileOss {
             String objectName = UUID.randomUUID().toString() + extension;
             
             String url = aliOssUtil.uploadFile(objectName, file.getInputStream());
-            result.put("url", url);
-            result.put("filename", originalFilename);
+            fileResult.put("url", url);
+            fileResult.put("filename", originalFilename);
+            
             log.info("url:{}", url);
             log.info("filename:{}", originalFilename);
 
-            return ResponseEntity.ok(result);
+            return ResponseEntity.ok(fileResult);
         } catch (IOException e) {
-            result.put("error", "文件上传失败: " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(result);
+            fileResult.put("error", "文件上传失败: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(fileResult);
         }
     }
 

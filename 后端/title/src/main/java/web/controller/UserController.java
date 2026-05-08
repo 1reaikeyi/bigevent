@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import common.JwtConstant;
 import common.JwtProperties;
 import jakarta.validation.constraints.Pattern;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -20,8 +21,10 @@ import web.utils.ThreadLocalContextHolder;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -34,6 +37,7 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("/user")
 @Validated
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -74,15 +78,62 @@ public class UserController {
     @PostMapping("/login")
     public Result login( String userName, @Pattern(regexp = "^\\S{5,16}$") String password){
         User user = userService.matchUser(userName, password);
-        if(user == null){
-            return Result.error("用户名或密码错误");
-        }
         Map<String,Object> map = new HashMap<>();
         map.put(JwtConstant.ID, user.getId());
         map.put(JwtConstant.NAME, user.getUserName());
         ThreadLocalContextHolder.set(map);
         String token = JwtUtil.createJWT(jwtProperties.getSecretKey(), jwtProperties.getTtlMillis(), map);
+        stringRedisTemplate.opsForValue().set("token:"+JwtConstant.ID, token, jwtProperties.getTtlMillis(), TimeUnit.MILLISECONDS);
         return Result.success(token);
+    }
+
+    /**
+     * 发送验证码
+     *
+     * @param email
+     * @return
+     */
+    @GetMapping("/code")
+    public Result sendCode(String email) {
+        ArrayList<String> secret = new ArrayList<>();
+        secret.add("asdfghjkl");
+        ArrayList<String> codes = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            Random random = new Random();
+            int number = random.nextInt(10);
+            codes.add(secret.get(i));
+        }
+        String code = codes.toString();
+        stringRedisTemplate.opsForValue().set("code:"+email, code);
+        log.info("验证码："+code);
+        return Result.success("验证码："+code);
+    }
+
+    /**
+     *
+     * @param email
+     * @param code
+     * @return
+     */
+    @Info(desc = "邮箱登录")
+    @PostMapping("byEmail")
+    public Result loginByEmail(@RequestParam("email") String email, String code){
+        sendCode(email);
+        String standard_code = stringRedisTemplate.opsForValue().get("code:"+email);
+        if(standard_code == null){
+            return Result.error("验证码获取失败");
+        }
+        User user = userService.matchEmail(email);
+        if(standard_code.equals(code)){
+            Map<String,Object> map = new HashMap<>();
+            map.put(JwtConstant.ID, user.getId());
+            map.put(JwtConstant.NAME, user.getUserName());
+            ThreadLocalContextHolder.set(map);
+            String token = JwtUtil.createJWT(jwtProperties.getSecretKey(), jwtProperties.getTtlMillis(), map);
+            stringRedisTemplate.opsForValue().set("token:"+ JwtConstant.ID, token, jwtProperties.getTtlMillis(), TimeUnit.MILLISECONDS);
+            return Result.success("@PostMapping::" + email);
+        }
+        return Result.error("验证失败");
     }
 
     /**

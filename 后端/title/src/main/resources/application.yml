@@ -19,7 +19,7 @@ spring:
 
   config:
     import:
-     classpath: mybatis-plus.yml, redis.yml
+     classpath: mybatis-plus.yml
 
   servlet:
     multipart:
