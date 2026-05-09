@@ -1,5 +1,6 @@
 package web.interceptors;
 
+import common.JwtConstant;
 import common.JwtProperties;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,11 +14,14 @@ import web.utils.JwtUtil;
 import web.utils.ThreadLocalContextHolder;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
     @Autowired
     private JwtProperties jwtProperties;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //判断当前拦截到的是Controller的方法还是其他资源
@@ -33,8 +37,10 @@ public class LoginInterceptor implements HandlerInterceptor {
                 response.setStatus(401);
                 return false;
             }
-            Map<String, Object> claims = JwtUtil.parseJWT(jwtProperties.getSecretKey(), token);
-            ThreadLocalContextHolder.set(claims);
+            String standard_token = stringRedisTemplate.opsForValue().get("token:"+ JwtConstant.ID);
+            if (!standard_token.equals(token)) {
+                return false;
+            }
             return true;
         } catch (Exception e) {
             // 没有登录，返回错误信息

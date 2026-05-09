@@ -3,6 +3,7 @@ package web.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import common.JwtConstant;
 import common.JwtProperties;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class UserController {
      * @return 结果
      */
     @PostMapping("/register")
-    public Result register(@Validated User user){
+    public Result register(@RequestBody User user){
         User checkUser = userService.findByUsername(user.getUserName());
         if(checkUser != null){
             return Result.error("用户名已存在");
@@ -83,7 +84,7 @@ public class UserController {
         map.put(JwtConstant.NAME, user.getUserName());
         ThreadLocalContextHolder.set(map);
         String token = JwtUtil.createJWT(jwtProperties.getSecretKey(), jwtProperties.getTtlMillis(), map);
-        stringRedisTemplate.opsForValue().set("token:"+JwtConstant.ID, token, jwtProperties.getTtlMillis(), TimeUnit.MILLISECONDS);
+        stringRedisTemplate.opsForValue().set("token:"+user.getId(), token, jwtProperties.getTtlMillis(), TimeUnit.MILLISECONDS);
         return Result.success(token);
     }
 
@@ -93,19 +94,18 @@ public class UserController {
      * @param email
      * @return
      */
-    @GetMapping("/code")
-    public Result sendCode(String email) {
-        ArrayList<String> secret = new ArrayList<>();
-        secret.add("asdfghjkl");
-        ArrayList<String> codes = new ArrayList<>();
+    @Info(desc = "发送验证码")
+    @PostMapping("/code")
+    public Result sendCode(@Email String email) {
+        String secret = "0123456789";
+        StringBuilder codeBuilder = new StringBuilder();
+        Random random = new Random();
         for (int i = 0; i < 4; i++) {
-            Random random = new Random();
-            int number = random.nextInt(10);
-            codes.add(secret.get(i));
+            int index = random.nextInt(secret.length());
+            codeBuilder.append(secret.charAt(index));
         }
-        String code = codes.toString();
-        stringRedisTemplate.opsForValue().set("code:"+email, code);
-        log.info("验证码："+code);
+        String code = codeBuilder.toString();
+        stringRedisTemplate.opsForValue().set("code:"+email, code, 10, TimeUnit.MINUTES);
         return Result.success("验证码："+code);
     }
 
@@ -117,8 +117,7 @@ public class UserController {
      */
     @Info(desc = "邮箱登录")
     @PostMapping("byEmail")
-    public Result loginByEmail(@RequestParam("email") String email, String code){
-        sendCode(email);
+    public Result loginByEmail(String email, String code){
         String standard_code = stringRedisTemplate.opsForValue().get("code:"+email);
         if(standard_code == null){
             return Result.error("验证码获取失败");
@@ -130,8 +129,8 @@ public class UserController {
             map.put(JwtConstant.NAME, user.getUserName());
             ThreadLocalContextHolder.set(map);
             String token = JwtUtil.createJWT(jwtProperties.getSecretKey(), jwtProperties.getTtlMillis(), map);
-            stringRedisTemplate.opsForValue().set("token:"+ JwtConstant.ID, token, jwtProperties.getTtlMillis(), TimeUnit.MILLISECONDS);
-            return Result.success("@PostMapping::" + email);
+            stringRedisTemplate.opsForValue().set("token:"+ user.getId(), token, jwtProperties.getTtlMillis(), TimeUnit.MILLISECONDS);
+            return Result.success(token);
         }
         return Result.error("验证失败");
     }
@@ -179,6 +178,7 @@ public class UserController {
         User user = new User();
         user.setPassword(DigestUtils.md5DigestAsHex(newPassword.getBytes()));
         userService.updateById(user);
+        stringRedisTemplate.delete("token:"+ JwtConstant.ID);
         return Result.success("更新密码成功::"+user.getId());
     }
 

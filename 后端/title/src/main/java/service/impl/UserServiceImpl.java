@@ -48,7 +48,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         queryWrapper.eq(User::getEmail,email);
         User checkUser = this.getOne(queryWrapper);
         if (checkUser == null) {
-            throw new RuntimeException("不存在用户");
+            throw new RuntimeException("用户不存在");
         }
         return checkUser;
     }

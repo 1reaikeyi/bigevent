@@ -22,7 +22,8 @@ public class WebConfigConfiguration implements WebMvcConfigurer {
         // 注册登录拦截器，排除注册和登录接口
        registry.addInterceptor(loginInterceptor)
                .addPathPatterns("/user/**")
-               .excludePathPatterns("/user/register", "/user/login", "/user/logout","/common/**");
+               .excludePathPatterns("/user/register", "/user/login", "/user/logout",
+                       "/user/code","/user/byEmail");
     }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
