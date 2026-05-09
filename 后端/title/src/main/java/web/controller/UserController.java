@@ -84,7 +84,7 @@ public class UserController {
         map.put(JwtConstant.NAME, user.getUserName());
         ThreadLocalContextHolder.set(map);
         String token = JwtUtil.createJWT(jwtProperties.getSecretKey(), jwtProperties.getTtlMillis(), map);
-        stringRedisTemplate.opsForValue().set("token:"+user.getId(), token, jwtProperties.getTtlMillis(), TimeUnit.MILLISECONDS);
+        stringRedisTemplate.opsForValue().set("token:"+user.getId(), token, jwtProperties.getTtlMillis(), TimeUnit.SECONDS);
         return Result.success(token);
     }
 
@@ -129,7 +129,7 @@ public class UserController {
             map.put(JwtConstant.NAME, user.getUserName());
             ThreadLocalContextHolder.set(map);
             String token = JwtUtil.createJWT(jwtProperties.getSecretKey(), jwtProperties.getTtlMillis(), map);
-            stringRedisTemplate.opsForValue().set("token:"+ user.getId(), token, jwtProperties.getTtlMillis(), TimeUnit.MILLISECONDS);
+            stringRedisTemplate.opsForValue().set("token:"+ user.getId(), token, jwtProperties.getTtlMillis(), TimeUnit.SECONDS);
             return Result.success(token);
         }
         return Result.error("验证失败");
