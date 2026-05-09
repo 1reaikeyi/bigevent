@@ -153,7 +153,7 @@ public class UserController {
      * @return 结果
      */
     @PutMapping
-    public Result updateUser(@RequestBody @Validated User user){
+    public Result updateUser(@RequestBody User user){
         userService.updateById(user);
         return Result.success("更新成功::"+user.getId());
     }
@@ -178,7 +178,7 @@ public class UserController {
         User user = new User();
         user.setPassword(DigestUtils.md5DigestAsHex(newPassword.getBytes()));
         userService.updateById(user);
-        stringRedisTemplate.delete("token:"+ JwtConstant.ID);
+        stringRedisTemplate.delete("token:"+ user.getId());
         return Result.success("更新密码成功::"+user.getId());
     }
 

@@ -10,9 +10,11 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
+import pojo.Result;
 import web.utils.JwtUtil;
 import web.utils.ThreadLocalContextHolder;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -37,14 +39,20 @@ public class LoginInterceptor implements HandlerInterceptor {
                 response.setStatus(401);
                 return false;
             }
-            String standard_token = stringRedisTemplate.opsForValue().get("token:"+ JwtConstant.ID);
+            Map<String, Object> claims =  JwtUtil.parseJWT(jwtProperties.getSecretKey(), token);
+            String currentId = claims.get(JwtConstant.ID).toString();
+            Long id = Long.parseLong(currentId);
+            String standard_token = stringRedisTemplate.opsForValue().get("token:"+ id);
+
             if (!standard_token.equals(token)) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 return false;
             }
+            //将用户id设置到ThreadContext中
+            ThreadLocalContextHolder.set(claims);
             return true;
         } catch (Exception e) {
-            // 没有登录，返回错误信息
-            response.setStatus(401);
+            response.getWriter().write(e.getMessage());
             return false;
         }
     }
