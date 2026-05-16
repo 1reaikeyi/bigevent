@@ -2,22 +2,12 @@ package service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
-import pojo.Result;
 import service.UserService;
-import repository.UserMapper;
-import pojo.User;
+import mapper.UserMapper;
+import entity.User;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import web.utils.ThreadLocalContextHolder;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Random;
 
 @Service
 @Slf4j

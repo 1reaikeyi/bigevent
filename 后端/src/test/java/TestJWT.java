@@ -1,10 +1,6 @@
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import web.TitleApplication;
-import web.utils.JwtUtil;
-
-import java.util.HashMap;
-import java.util.Map;
+import controller.TitleApplication;
 
 @SpringBootTest(classes = TitleApplication.class)
 public class TestJWT {

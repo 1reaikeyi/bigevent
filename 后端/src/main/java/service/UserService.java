@@ -1,8 +1,7 @@
 package service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import pojo.Result;
-import pojo.User;
+import entity.User;
 
 public interface UserService extends IService<User> {
     User findByUsername(String username);
